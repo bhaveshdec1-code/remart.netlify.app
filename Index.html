@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>ReUseMart | Refurbished Mobiles & Used Cars</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+* {
+    box-sizing: border-box;
+}
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: #f2f4f7;
+}
+header {
+    background: linear-gradient(135deg, #1e3c72, #2a5298);
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+nav {
+    background: #ffffff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 20px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+nav a {
+    margin: 0 12px;
+    text-decoration: none;
+    color: #333;
+    font-weight: 600;
+}
+.search-box input {
+    padding: 7px;
+    width: 200px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
+.container {
+    padding: 25px;
+}
+.filters button {
+    margin-right: 10px;
+    padding: 8px 14px;
+    border: none;
+    background: #2a5298;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.products {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+.card {
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+    transition: transform 0.3s;
+}
+.card:hover {
+    transform: translateY(-5px);
+}
+.card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    transition: transform 0.3s;
+}
+.card:hover img {
+    transform: scale(1.05);
+}
+.card-content {
+    padding: 15px;
+}
+.tag {
+    display: inline-block;
+    padding: 4px 8px;
+    font-size: 12px;
+    background: #eaf1ff;
+    color: #2a5298;
+    border-radius: 4px;
+}
+.price {
+    color: green;
+    font-size: 18px;
+    font-weight: bold;
+}
+button.buy {
+    margin-top: 10px;
+    width: 100%;
+    padding: 10px;
+    border: none;
+    background: #27ae60;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+button.buy:hover {
+    background: #219150;
+}
+footer {
+    background: #1e3c72;
+    color: white;
+    text-align: center;
+    padding: 15px;
+    margin-top: 40px;
+}
+.cart {
+    font-weight: bold;
+    color: #2a5298;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>ReUseMart</h1>
+    <p>Smart Shopping | Sustainable Future</p>
+</header>
+
+<nav>
+    <div>
+        <a href="#">Home</a>
+        <a href="#">Mobiles</a>
+        <a href="#">Cars</a>
+        <a href="#">Contact</a>
+    </div>
+    <div class="search-box">
+        <input type="text" placeholder="Search products...">
+        <span class="cart">🛒 Cart: <span id="cartCount">0</span></span>
+    </div>
+</nav>
+
+<div class="container">
+
+    <div class="filters">
+        <button onclick="filterItems('all')">All</button>
+        <button onclick="filterItems('mobile')">Mobiles</button>
+        <button onclick="filterItems('car')">Cars</button>
+    </div>
+
+    <div class="products">
+
+        <!-- Mobile 1 -->
+        <div class="card mobile">
+            <img src="https://images.unsplash.com/photo-1603899122634-f086ca5f5ddd" alt="iPhone">
+            <div class="card-content">
+                <span class="tag">Refurbished Mobile</span>
+                <h3>iPhone 12</h3>
+                <p>Condition: Excellent</p>
+                <p class="price">₹38,999</p>
+                <button class="buy" onclick="addToCart()">Add to Cart</button>
+            </div>
+        </div>
+
+        <!-- Mobile 2 -->
+        <div class="card mobile">
+            <img src="https://images.unsplash.com/photo-1598327105666-5b89351aff97" alt="Samsung">
+            <div class="card-content">
+                <span class="tag">Refurbished Mobile</span>
+                <h3>Samsung Galaxy S21</h3>
+                <p>Condition: Very Good</p>
+                <p class="price">₹29,999</p>
+                <button class="buy" onclick="addToCart()">Add to Cart</button>
+            </div>
+        </div>
+
+        <!-- Car 1 -->
+        <div class="card car">
+            <img src="https://images.unsplash.com/photo-1549924231-f129b911e442" alt="Car">
+            <div class="card-content">
+                <span class="tag">Used Car</span>
+                <h3>Maruti Swift (2019)</h3>
+                <p>Petrol | 35,000 km</p>
+                <p class="price">₹4,50,000</p>
+                <button class="buy" onclick="addToCart()">Add to Cart</button>
+            </div>
+        </div>
+
+        <!-- Car 2 -->
+        <div class="card car">
+            <img src="https://images.unsplash.com/photo-1553440569-bcc63803a83d" alt="Hyundai">
+            <div class="card-content">
+                <span class="tag">Used Car</span>
+                <h3>Hyundai i20 (2018)</h3>
+                <p>Diesel | 42,000 km</p>
+                <p class="price">₹5,20,000</p>
+                <button class="buy" onclick="addToCart()">Add to Cart</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<footer>
+    <p>© 2026 ReUseMart | Temporary Prototype Website</p>
+    <p>Verified Sellers • Quality Checked • Eco-Friendly</p>
+</footer>
+
+<script>
+let cart = 0;
+function addToCart() {
+    cart++;
+    document.getElementById("cartCount").innerText = cart;
+    alert("Item added to cart!");
+}
+function filterItems(category) {
+    let items = document.querySelectorAll('.card');
+    items.forEach(item => {
+        if (category === 'all' || item.classList.contains(category)) {
+            item.style.display = 'block';
+        } else {
+            item.style.display = 'none';
+        }
+    });
+}
+</script>
+
+</body>
+</html>
